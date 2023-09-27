@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery Ajax POST Example</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="./pythoncode.py"></script>
+</head>
+<body>
+
+  <h1>jQuery Ajax POST Example</h1>
+
+  <script>
+    // Wait for the DOM to be ready
+    $(document).ready(function() {
+      
+      // Event handler for the form submission
+      $('form').submit(function(event) {
+        event.preventDefault(); // Prevent the default form submission behavior
+        
+        // Get the form input value
+        var inputText = $('#inputText').val();
+        
+        // Make the AJAX POST request
+        $.ajax({
+          type: 'POST',
+          url: './pythoncode.py',
+          data: { text: inputText },
+          success: function(response) {
+            console.log('Success:', response);
+            // Handle the response
+          },
+          error: function(xhr, status, error) {
+            console.log('Error:', error);
+            // Handle the error
+          }
+        });
+      });
+      
+    });
+  </script>
+
+  <form>
+    <label for="inputText">Input Text:</label>
+    <input type="text" id="inputText">
+    <button type="submit">Submit</button>
+  </form>
+
+</body>
+</html>
