@@ -4,20 +4,21 @@ current plan:
 steps:
 
 BACKEND
-- get a google maps api key
-- implement google maps api library in python
-- write code to calculate driving distance from point A to point B
-- establish hierarchy system (disabilities, elderly etc. get priority)
-- write code to calculate emissions (probably just a multiplier based on distance, car model)
-- if possible - integrate traffic data
-- optimal route sorting (best route, cheapest, least emissions, etc.)
-- point based reward system, if route is congested - 
+- get a google maps api key (x)
+- implement google maps api library in (python) javascript
+- learn wix language
+- write code to calculate driving distance from point A to point B (done in python, port to javascript)
+- establish hierarchy system (disabilities, elderly etc. get priority) (still needs implemeting)
+- write code to calculate emissions (probably just a multiplier based on distance, car model) (x)
+- if possible - integrate traffic data (x)
+- optimal route sorting (best route, cheapest, least emissions, etc.) (x) (needs porting)
+- point based reward system, if route is congested - (integrate with api needed, javascript port)
     if you choose to walk/alternate public transport option, 
     you get credits, which you can use to get car rides when it's not too congested
 
 FRONTEND
-- user interface (app or website, both are fine)
-- similar style to google maps
+- user interface (app or website, both are fine) (wix)
+- similar style to google maps (directions planner)
 - if possible - easy accessbility? color blind support, audio guide
 - options to choose routes
 - pseudo/placeholder text for personal information
