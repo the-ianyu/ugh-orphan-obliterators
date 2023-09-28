@@ -25,6 +25,18 @@ FRONTEND
 - integrate google maps user interface (interactable)
 
 
+JOBS
+Jasper - Frontend developer
+Ian - weird porting stuff
+Ethan - video script
+Samuel - hierarchy system
+
+
+google cloud server - ian
+use google maps "walking radius within x minutes" thing to determine rideshare
+rideshare algorithm - the rest of you
+
+
 CHATGPT GENERATED: HIERARCHY SYSTEM CONCEPT
     "Eco-Access RideSharing System" (EARS).
 
