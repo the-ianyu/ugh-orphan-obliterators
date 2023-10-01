@@ -1,66 +1,54 @@
-// Initialize and add the map
-let map, infoWindow;
+import { createClient } from '@google/maps';
+import GetLocation from 'public/currentlocation.js'
 
-async function initMap() {
-  // The location of Uluru
-  const position = { lat: 22.3, lng: 114.15 };
-  // Request needed libraries.
-  //@ts-ignore
-  const { Map } = await google.maps.importLibrary("maps");
-  const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+export default async function getRoutes() {
+    console.log("success");
+    const googleMapsClient = require('@google/maps').createClient({
+        key: 'AIzaSyDKG1n80LSjJbAr_q-PN7BFqszuyL4pS9A',
+        Promise: Promise,
+    });
 
-  // The map, centered at Uluru
-  map = new Map(document.getElementById("map"), {
-    zoom: 9,
-    center: position,
-    mapId: "DEMO_MAP_ID",
-  });
-
-  // The marker, positioned at Uluru
-  const infoWindow = new google.maps.InfoWindow({
-    position: position,
-    content: "Location found:"
-  });
-  
-  const locationButton = document.createElement("button");
-  locationButton.textContent = "Pan to Current Location";
-  locationButton.classList.add("custom-map-control-button");
-  map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
-  locationButton.addEventListener("click", () => {
-    // Try HTML5 geolocation.
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-          const pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          };
-          infoWindow.setPosition(pos);
-          infoWindow.setContent("Location found.");
-          infoWindow.open(map);
-          var marker = new AdvancedMarkerElement({
-            map: map,
-            position: pos,
-            title: "Uluru",
-          });
-          infoWindow.open(map,marker);
-          map.setCenter(pos);
-        },
-        () => {
-          handleLocationError(true, infoWindow, map.getCenter());
-        },
-      );
-      const marker = new AdvancedMarkerElement({
-        map: map,
-        position: pos,
-        title: "Uluru",
-      });
+    let templat, templong;
+    if ($w('#origin').valid == true) {
+        templat = $w('#origin').value.latitude;
+        templong = $w('#origin').value.longitude;
     } else {
-      // Browser doesn't support Geolocation
-      handleLocationError(false, infoWindow, map.getCenter());
+        templat = GetLocation()[0];
+        templong = GetLocation()[1];
     }
-    
-  });
-  
-}
+    console.log([templat, templong]);
+    const map = new googleMapsClient.createMap({
+        div: '#map',
+        center: { lat: -34.397, lng: 150.644 },
+        zoom: 8,
+    });
 
-initMap();
+    const directionsRenderer = googleMapsClient.createDirectionsRenderer({
+        map: map,
+    });
+
+    const origin = `${templat},${templong}`;
+    const destination = `${$w('#destination').value.latitude},${$w('#destination').value.longitude}`;
+
+    const request = {
+        origin: origin,
+        destination: destination,
+        travelMode: 'driving',
+        provideRouteAlternatives: true,
+    };
+
+    googleMapsClient
+        .directions(request)
+        .asPromise()
+        .then((response) => {
+            const { status, json } = response;
+            if (status === 200) {
+                directionsRenderer.render(json);
+            } else {
+                console.error('Directions request failed. Status: ' + status);
+            }
+        })
+        .catch((error) => {
+            console.error('Error occurred while fetching directions:', error);
+        });
+}
