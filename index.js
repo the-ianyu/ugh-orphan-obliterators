@@ -4,7 +4,7 @@ import GetLocation from 'public/currentlocation.js'
 export default async function getRoutes() {
     console.log("success");
     const googleMapsClient = require('@google/maps').createClient({
-        key: 'AIzaSyDKG1n80LSjJbAr_q-PN7BFqszuyL4pS9A',
+        key: 'key',
         Promise: Promise,
     });
 
