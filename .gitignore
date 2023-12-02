@@ -160,4 +160,4 @@ cython_debug/
 #.idea/
 
 # Custom
-local-api-key.txt
+**/local-api-key.txt
