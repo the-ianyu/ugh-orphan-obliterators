@@ -1,0 +1,55 @@
+current plan:
+- build rideshare optimization program which calculates emissions and maximizes person to car ratio
+
+steps:
+
+BACKEND
+- get a google maps api key
+- implement google maps api library in python
+- write code to calculate driving distance from point A to point B
+- establish hierarchy system (disabilities, elderly etc. get priority)
+- write code to calculate emissions (probably just a multiplier based on distance, car model)
+- if possible - integrate traffic data
+- optimal route sorting (best route, cheapest, least emissions, etc.)
+- point based reward system, if route is congested - 
+    if you choose to walk/alternate public transport option, 
+    you get credits, which you can use to get car rides when it's not too congested
+
+FRONTEND
+- user interface (app or website, both are fine)
+- similar style to google maps
+- if possible - easy accessbility? color blind support, audio guide
+- options to choose routes
+- pseudo/placeholder text for personal information
+- integrate google maps user interface (interactable)
+
+
+CHATGPT GENERATED: HIERARCHY SYSTEM CONCEPT
+    "Eco-Access RideSharing System" (EARS).
+
+    Principles of EARS
+    Consumer-Centric: The system is designed to meet the diverse needs of consumers, including those with disabilities.
+    Environmentally Friendly: The system promotes the use of low-emission vehicles and efficient routes to reduce the environmental impact.
+    Fair and Transparent: The system is designed to be fair to all riders and drivers, and transparent about how points are calculated and used.
+    
+    Components of EARS
+    User Profile: This includes information about the user's needs and preferences, such as disability needs, preference for low-emission vehicles, etc.
+    Ride Details: This includes information about each ride, such as the distance, time, route efficiency, etc.
+    Vehicle Details: This includes information about the vehicle used for the ride, such as the type of vehicle (e.g., standard, hybrid, electric), its fuel efficiency, age, etc.
+    
+    Points System
+    Points are calculated based on the following factors:
+
+    Disability Accommodation (0-100 points): These points are awarded based on the accommodation provided for riders with disabilities. The more the specific needs of the rider are met, the higher the score.
+    Environmental Impact (0-100 points): These points are awarded based on the environmental impact of the ride. Factors include the type and age of the vehicle, its fuel efficiency, route efficiency, etc. Lower environmental impact results in a higher score.
+    Ride Efficiency (0-100 points): These points measure how efficiently the ride was completed. Factors can include the directness of the route, the speed of service, etc. More efficient rides result in higher points.
+    Service Quality (0-100 points): These points are awarded based on the quality of service provided by the driver. This could be measured using rider feedback, driver professionalism, etc.
+    Each ride receives a score between 0 and 400, which is calculated by adding up the points from each of the above categories. This score can be used to rank rides and drivers, and to give users an idea of the overall quality and suitability of a ride.
+
+    Using the Points
+    The points can be used in several ways:
+
+    Rider Ranking: Riders can sort and filter rides based on the point system, allowing them to choose rides that best meet their needs and preferences.
+    Driver Incentives: Drivers can receive incentives for achieving high point scores, encouraging them to accommodate riders with disabilities, use efficient routes, and provide high-quality service.
+    Environmental Impact Reporting: The points can be used to generate reports on the environmental impact of the ride-sharing service, supporting efforts to reduce emissions and promote sustainability.
+    This is a basic outline of the system. Further details would need to be worked out based on specific needs and constraints.
